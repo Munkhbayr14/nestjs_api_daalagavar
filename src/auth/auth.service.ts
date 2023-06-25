@@ -9,6 +9,7 @@ interface User {
 
 @Injectable()
 export class AuthService {
+  //Defualt-аас username pass хоёр үүсгэсэн
   private users: User[] = [
     { username: 'mb123', password: 'psw123', name: 'munkhbayar' },
   ];
@@ -25,6 +26,8 @@ export class AuthService {
 
   async login(user: LoginDto): Promise<{ accessToken: string }> {
     try {
+      //defualt-аар үүсэн username pass аа хэрэглэгчээс орж ирсэн утгар шалгаж байгаа
+      //Postman ашиглан шалгах боломжтой
       const existingUser = this.findUser(user.username);
       if (!user) {
         throw new Error();
